@@ -1,0 +1,4 @@
+conf/*
+data/app/logs/*
+data/app/seafile/*
+data/mariadb/*

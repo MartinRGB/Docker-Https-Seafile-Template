@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb
+    container_name: seafile-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=YooSh8ae
+      - MYSQL_LOG_CONSOLE=true
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+    networks:
+      - seafile-net
+
+  memcached:
+    image: memcached
+    container_name: seafile-memcached
+    entrypoint: memcached -m 256
+    networks:
+      - seafile-net
+          
+  seafile:
+    image: seafileltd/seafile-mc
+    container_name: seafile
+    ports:
+      - "8443:80"
+    volumes:
+      - ./data/app:/shared
+    environment:
+      - DB_HOST=db
+      - DB_ROOT_PASSWD=YooSh8ae
+      - TIME_ZONE=Etc/UTC
+      - SEAFILE_ADMIN_EMAIL=martinrgb@seafile.com
+      - SEAFILE_ADMIN_PASSWORD=YooSh8ae
+      - SEAFILE_SERVER_LETSENCRYPT=false
+      - SEAFILE_SERVER_HOSTNAME=172.22.0.20
+    depends_on:
+      - db
+      - memcached
+    networks:
+      - seafile-net
+  proxy:
+    image: nginx:latest
+    container_name: seafile-nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./proxy/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./proxy/certs:/etc/nginx/certs
+    depends_on:
+      - seafile
+
+networks:
+  seafile-net:
