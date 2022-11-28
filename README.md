@@ -1,4 +1,4 @@
-# Docker-HTTPS-ZFile-Template
+# Docker-HTTPS-Seafile-Template
 
 1. create ur own CA(optinal) & save to ./proxy/certs
 
