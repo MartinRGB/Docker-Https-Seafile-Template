@@ -19,7 +19,9 @@
 4. setup
     ```docker-compose up```
 
-5. 本地存储 -> 文件路径 `/root/zfile/data`
+5. Link:
 
-reference -> https://www.howtoforge.com/how-to-create-locally-trusted-ssl-certificates-with-mkcert-on-ubuntu/
+![1](https://user-images.githubusercontent.com/7036706/204402428-8578e9a3-9cf6-4c8d-84bf-8db1c83dd8a8.png)
+
+
    
