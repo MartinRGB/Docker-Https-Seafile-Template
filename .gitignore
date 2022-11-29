@@ -1,4 +1,12 @@
 conf/*
 data/app/logs/*
-data/app/seafile/*
+data/app/seafile/ccnet/*
+data/app/seafile/logs/*
+data/app/seafile/seafile-data/*
+data/app/seafile/seahub-data/*
+data/app/seafile/conf/__pycache__/*
+data/app/seafile/conf/seafile.conf
+data/app/seafile/conf/seafdav.conf
+data/app/seafile/conf/ccnet.conf
+data/app/seafile/conf/gunicorn.conf.py
 data/mariadb/*
